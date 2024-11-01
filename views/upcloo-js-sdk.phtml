@@ -1,0 +1,24 @@
+<?php
+    if (get_option(UPCLOO_MANUAL_PLACEHOLDER) != true) :
+?>
+<div class='upcloo-widget' id="<?php echo $this->configId?>"></div>
+<?php
+    endif;
+?>
+<script type="text/javascript">
+(function(g,d,id){
+  upCloo = g.upCloo || []; 
+  upCloo.push(
+    {
+        "permalink" : "<?php echo $this->permalink; ?>",
+        "siteKey" : "<?php echo $this->sitekey; ?>"
+        <?php echo (($this->vsitekey) ? ",\"vSiteKey\":\"{$this->vsitekey}\"" : ""); ?>
+    }
+  );
+  var s = d.createElement('script') , n = d.getElementsByTagName('script')[0]; 
+  s.type = 'text/javascript';
+  s.async = true;s.id = id;
+  s.src = '//r.upcloo.com/a/a.js';
+  !d.getElementById(id) ? n.parentNode.insertBefore(s,n) :false;
+})(this,document,'upcloo_js_sdk')
+</script>
